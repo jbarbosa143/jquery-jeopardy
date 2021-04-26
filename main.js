@@ -85,7 +85,7 @@ function compareAnswers(realAnswer,money){
         // console.log(input)
         // console.log('Answer in Function', realAnswer)
         if(input === realAnswer){
-            
+            updateScore(money)
             incorrect_Correct.html('Correct!!')
         }
         else if(input !== realAnswer){
@@ -98,7 +98,7 @@ function compareAnswers(realAnswer,money){
 
 function updateScore(money){
     let winnings = $('span');
-    total += Number(money);
+    total+= Number(money);
     winnings.text(total)
     console.log("money", money,total)
 }
