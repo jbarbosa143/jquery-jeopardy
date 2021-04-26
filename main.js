@@ -67,7 +67,7 @@ buttons.click(function(e){
                     <p>${realQuestion.question}</p>`
             askQuestion.html(newHtml)
             compareAnswers(realAnswer,money); 
-            updateScore(money)
+            
 })
 
 
