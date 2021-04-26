@@ -4,6 +4,7 @@ let quest2 =[];
 let quest4 =[];
 let quest6 = [];
 let quest8 = [];
+let total = 0;
 
 // Store the Selected Value OF Question in new array
 for(i = 0; i < QUESTIONS.length; i ++){
@@ -34,38 +35,39 @@ buttons.click(function(e){
     if(jqSelector.val() === '$100'){
         realQuestion = quest1[Math.floor(Math.random() * quest1.length)]
         realAnswer = realQuestion.answer;
-        money = realQuestion.value;
+        money = realQuestion.value.slice(1);
         console.log('Question $100', realQuestion)
     }
     if(jqSelector.val() === '$200'){
         realQuestion = quest2[Math.floor(Math.random() * quest2.length)]
         realAnswer = realQuestion.answer;
-        money = realQuestion.value;
+        money = realQuestion.value.slice(1);
         console.log('Question $200', realQuestion)
     }
     if(jqSelector.val() === '$400'){
         realQuestion = quest4[Math.floor(Math.random() * quest4.length)]
         realAnswer = realQuestion.answer;
-        money = realQuestion.value;
+        money = realQuestion.value.slice(1);
         console.log('Question $400', realQuestion)
     }
     if(jqSelector.val() === '$600'){
         realQuestion = quest6[Math.floor(Math.random() * quest6.length)];
         realAnswer = realQuestion.answer;
-        money = realQuestion.value;
+        money = realQuestion.value.slice(1);
         console.log('Question $600', realQuestion)
         
     }
     if(jqSelector.val() === '$800'){
         realQuestion = quest8[Math.floor(Math.random() * quest8.length)]
         realAnswer = realQuestion.answer;
-        money = realQuestion.value;
+        money = realQuestion.value.slice(1);
         console.log('Question $800', realQuestion)
     }
     let newHtml = `<h1> Your Question: </h1>
                     <p>${realQuestion.question}</p>`
             askQuestion.html(newHtml)
-            compareAnswers(realAnswer,money);  
+            compareAnswers(realAnswer,money); 
+            updateScore(money)
 })
 
 
@@ -92,12 +94,11 @@ function compareAnswers(realAnswer,money){
         // console.log('User',input)
         // console.log('Stored',realAnswer)
     })
-    updateScore(money)
 }
 
 function updateScore(money){
     let winnings = $('span');
-    let total = 0;
-    total += money;
+    total += Number(money);
     winnings.text(total)
+    console.log("money", money,total)
 }
